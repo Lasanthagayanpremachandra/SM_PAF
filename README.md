@@ -139,7 +139,4 @@ Dumbo is a full-stack social media application in MVC architecture prepared usin
 <p align="center"><img width=700 src="https://github.com/SwishSwishBish/DumboSocialMedia/blob/master/images/demo4.gif?raw=true" alt="demo"/></p>
 <p align="center"><img width=50 src="images\dumbo.ico" alt="demo"/></p>
 
-## Connect with me:
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sena-atak%C3%B6%C5%9Fker-3a79b0235/)
-[![Twitter](https://img.shields.io/badge/twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/SenaAtakosker)
-[![portfolio](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:senaatakosker@gmail.com)
+

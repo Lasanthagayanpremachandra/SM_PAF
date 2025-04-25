@@ -15,12 +15,12 @@ const DonateCard = () => {
                 </div>
                 <div class="box-bottom">
                     <div class="box-title instagram-title">
-                        Dumbo
+                        MindMingle
                     </div>
                     <div class="box-text">
-                        {t('Dumbo is developed with the contributions of the participants. Do you want to support the dumbo?')}
+                        {t('Where curious minds connect, share knowledge, and grow together in a vibrant educational community.')}
                     </div>
-                    <a href="#" target="_blank">{t('DONATE')}</a>
+                    <a href="#" target="_blank">{t('MindMingle')}</a>
                 </div>
             </div>
         </div>

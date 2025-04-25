@@ -96,7 +96,7 @@ const Navbar = props => {
             <nav className="navbar navbar-expand navbar-light container p-0">
 
                 <Link className="navbar-brand fs-3 text-primary" to="/">
-                    <h1 className='fw-bold'><img src={logo} width="50" alt='Dumbo Logo' />Dumbo</h1>
+                    <h1 className='fw-bold'><img src={logo} width="50" alt='Dumbo Logo' />MindMingle</h1>
                 </Link>
                 {links}
             </nav >
