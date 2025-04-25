@@ -1,21 +1,4 @@
-# <p align=center>Dumbo Social Media</p>
-<p align="center"><img 
-    style="width: 70%;"
-    src="https://github.com/SwishSwishBish/DumboSocialMedia/blob/master/images/dumboss.png?raw=true" 
-    alt="Our logo">
-</img></p>
-<p align="center">
-<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java"/> 
-<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="SpringBoot"/> 
-<img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap"/>
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"/>
-<img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" alt="Redux"/>
-<p>
 
-
-<p align=center>
-Dumbo is a full-stack social media application in MVC architecture prepared using Spring boot and React. It is developed to learn, so it is not equipped to meet real-world expectations. It performs the basic functions that can be expected from the social media platform properly.</p> 
-<p align=center>You are free to develop and use it.</p>
 
 ## Techs
 <details close="open">
@@ -130,13 +113,5 @@ Dumbo is a full-stack social media application in MVC architecture prepared usin
         <li>Valitadions</li>
       </ul>
 </details>
-
-## Demo
-
-<p align="center"><img width=700 src="https://github.com/SwishSwishBish/DumboSocialMedia/blob/master/images/demo1.gif?raw=true" alt="demo"/></p>
-<p align="center"><img width=700 src="https://github.com/SwishSwishBish/DumboSocialMedia/blob/master/images/demo2.gif?raw=true" alt="demo"/></p>
-<p align="center"><img width=700 src="https://github.com/SwishSwishBish/DumboSocialMedia/blob/master/images/demo3.gif?raw=true" alt="demo"/></p>
-<p align="center"><img width=700 src="https://github.com/SwishSwishBish/DumboSocialMedia/blob/master/images/demo4.gif?raw=true" alt="demo"/></p>
-<p align="center"><img width=50 src="images\dumbo.ico" alt="demo"/></p>
 
 
