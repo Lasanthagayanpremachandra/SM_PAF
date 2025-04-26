@@ -18,7 +18,7 @@ const DonateCard = () => {
                         MindMingle
                     </div>
                     <div class="box-text">
-                        {t('Where curious minds connect, share knowledge, and grow together in a vibrant educational community.')}
+                        {t('Where curious minds connect, share knowledge, and grow together in a vibrant educational community web.')}
                     </div>
                     <a href="#" target="_blank">{t('MindMingle')}</a>
                 </div>
