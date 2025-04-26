@@ -71,4 +71,54 @@ export const deleteUser = username => {
 
 export const logout = () => {
     return axios.post('/api/1.0/logout');
-}
+};
+
+// New API calls for post interactions
+
+// Like related API calls
+export const likePost = id => {
+    return axios.post(`/api/1.0/posts/${id}/like`);
+};
+
+export const unlikePost = id => {
+    return axios.delete(`/api/1.0/posts/${id}/like`);
+};
+
+export const getPostLikes = id => {
+    return axios.get(`/api/1.0/posts/${id}/likes`);
+};
+
+export const reactToPost = (id, emoji) => {
+    return axios.post(`/api/1.0/posts/${id}/react`, { emoji });
+};
+
+// Comment related API calls
+export const getPostComments = id => {
+    return axios.get(`/api/1.0/posts/${id}/comments`);
+};
+
+export const addComment = (id, content, replyToId = null) => {
+    const payload = { content };
+    if (replyToId) {
+        payload.replyToId = replyToId;
+    }
+    return axios.post(`/api/1.0/posts/${id}/comments`, payload);
+};
+
+export const deleteComment = (postId, commentId) => {
+    return axios.delete(`/api/1.0/posts/${postId}/comments/${commentId}`);
+};
+
+// Share related API calls
+export const sharePost = (id, platform) => {
+    return axios.post(`/api/1.0/posts/${id}/share`, { platform });
+};
+
+export const getPostShares = id => {
+    return axios.get(`/api/1.0/posts/${id}/shares`);
+};
+
+// Post stats API call (gets likes, comments, shares in one request)
+export const getPostStats = id => {
+    return axios.get(`/api/1.0/posts/${id}/stats`);
+};

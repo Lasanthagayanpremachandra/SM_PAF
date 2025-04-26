@@ -27,7 +27,7 @@ const LanguageSelect = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-12 text-center">
-                            <p>Copyright © 2025. PAF</p>
+                            <p>Copyright © 2025. PAF MindMingl</p>
                         </div>
                     </div>
                 </div>
