@@ -97,7 +97,7 @@ const PostView = props => {
                 }
                 message={
                     <>
-                        <div className="text-center">{t('This post will be permanently deleted.')}<br />{t('Are you sure?')}</div>
+                        <div className="text-center">{t('This post will be a permanently deleted.')}<br />{t('Are you sure?')}</div>
 
 
                         <div class="card mt-2 p-3 shadow">
