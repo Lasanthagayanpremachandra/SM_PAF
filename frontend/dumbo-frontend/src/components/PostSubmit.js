@@ -17,6 +17,8 @@ const PostSubmit = () => {
     const [attachmentId, setAttachmentId] = useState();
     const [activeTab, setActiveTab] = useState('posts');
     const [fileType, setFileType] = useState('image');
+    const [skillCategory, setSkillCategory] = useState('');
+    const [educationLevel, setEducationLevel] = useState('');
 
     const pendingApiCall = useApiProgress('post', '/api/1.0/posts', true);
     const pendingFileUpload = useApiProgress('post', '/api/1.0/post-attachments', true);
@@ -26,6 +28,17 @@ const PostSubmit = () => {
         profileImage: store.profileImage
     }));
 
+    // Skill categories
+    const skillCategories = [
+        'Technology', 'Arts', 'Business', 'Education', 'Health',
+        'Language', 'Music', 'Sports', 'Cooking', 'Other'
+    ];
+
+    // Education levels
+    const educationLevels = [
+        'Beginner', 'Intermediate', 'Advanced', 'Expert', 'All Levels'
+    ];
+
     useEffect(() => {
         if (!focused) {
             setPost('');
@@ -34,12 +47,14 @@ const PostSubmit = () => {
             setNewImage();
             setAttachmentId();
             setFileType('image');
+            setSkillCategory('');
+            setEducationLevel('');
         }
     }, [focused]);
 
     useEffect(() => {
         setErrors({});
-    }, [post, skill]);
+    }, [post, skill, skillCategory, educationLevel]);
 
     const onClickPost = async () => {
         const body = {
@@ -48,7 +63,10 @@ const PostSubmit = () => {
             // Add a type field to distinguish between regular posts and skill posts
             type: activeTab === 'posts' ? 'post' : 'skill',
             // Include the file type for skill posts
-            fileType: activeTab === 'skills' ? fileType : null
+            fileType: activeTab === 'skills' ? fileType : null,
+            // Include category and education level for skill posts
+            skillCategory: activeTab === 'skills' ? skillCategory : null,
+            educationLevel: activeTab === 'skills' ? educationLevel : null
         }
 
         try {
@@ -91,6 +109,16 @@ const PostSubmit = () => {
     let textAreaClass = 'form-control';
     if (errors.content) {
         textAreaClass += ' is-invalid';
+    }
+
+    let categoryClass = 'form-select';
+    if (errors.skillCategory) {
+        categoryClass += ' is-invalid';
+    }
+
+    let educationClass = 'form-select';
+    if (errors.educationLevel) {
+        educationClass += ' is-invalid';
     }
 
     return (
@@ -165,6 +193,42 @@ const PostSubmit = () => {
                             </textarea>
                             <div className="invalid-feedback">{errors.content}</div>
                         </div>
+
+                        {/* Display category and education level when focused and in skills tab */}
+                        {focused && activeTab === 'skills' && (
+                            <div className="row mt-2">
+                                <div className="col-md-6 mb-2">
+                                    <select
+                                        className={categoryClass}
+                                        id="skill-category"
+                                        value={skillCategory}
+                                        onChange={e => setSkillCategory(e.target.value)}
+                                        required
+                                    >
+                                        <option value="">{t('Select category')}</option>
+                                        {skillCategories.map((category, index) => (
+                                            <option key={index} value={category}>{t(category)}</option>
+                                        ))}
+                                    </select>
+                                    <div className="invalid-feedback">{errors.skillCategory}</div>
+                                </div>
+                                <div className="col-md-6 mb-2">
+                                    <select
+                                        className={educationClass}
+                                        id="education-level"
+                                        value={educationLevel}
+                                        onChange={e => setEducationLevel(e.target.value)}
+                                        required
+                                    >
+                                        <option value="">{t('Select education level')}</option>
+                                        {educationLevels.map((level, index) => (
+                                            <option key={index} value={level}>{t(level)}</option>
+                                        ))}
+                                    </select>
+                                    <div className="invalid-feedback">{errors.educationLevel}</div>
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* File Preview and Buttons - shown when focused */}
@@ -219,7 +283,16 @@ const PostSubmit = () => {
                                 />
                             </label>
                             <div className="btn-group">
-                                <button type="submit" onClick={onClickPost} className="btn btn-primary text-light" disabled={pendingApiCall || pendingFileUpload}>
+                                <button
+                                    type="submit"
+                                    onClick={onClickPost}
+                                    className="btn btn-primary text-light"
+                                    disabled={
+                                        pendingApiCall ||
+                                        pendingFileUpload ||
+                                        (activeTab === 'skills' && (!skillCategory || !educationLevel))
+                                    }
+                                >
                                     {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>}
                                     {activeTab === 'posts' ? t('Share') : t('Share Skill')}
                                 </button>
