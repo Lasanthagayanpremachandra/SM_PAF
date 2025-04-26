@@ -79,7 +79,7 @@ const PostView = props => {
                 </div>
                 <div className="card-footer lh-1 ">
                     {isLoggedIn && <>
-                        <Link className="card-link text-decoration-none "><img src="https://img.icons8.com/external-anggara-flat-anggara-putra/16/000000/external-favorite-interface-anggara-flat-anggara-putra.png" alt='' /> {t('Like')}</Link>
+                        <Link className="card-link text-decoration-none "><img src="https://img.icons8.com/external-anggara-flat-anggara-putra/16/000000/external-favorite-interface-anggara-flat-anggara-putra.png" alt='' /> {t('Like(1)')}</Link>
                         <Link className="card-link text-decoration-none"><img src="https://img.icons8.com/external-anggara-flat-anggara-putra/16/000000/external-report-interface-anggara-flat-anggara-putra-2.png" alt='' /> {t('Comment')}</Link>
                     </>}
                     <Link className="card-link text-decoration-none float-end d-inline">
