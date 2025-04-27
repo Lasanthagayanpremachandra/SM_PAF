@@ -70,6 +70,6 @@ public class PostController {
     @PreAuthorize("@postSecurity.isAllowedToDelete(#id, principal)")
     GenericResponse deletePost(@PathVariable Long id) {
         postService.delete(id);
-        return new GenericResponse("Post removed.");
+        return new GenericResponse("Post removed done.");
     }
 }
