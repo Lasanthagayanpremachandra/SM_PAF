@@ -1,0 +1,102 @@
+1. Creating a user profile
+profile UserProfile {
+  username: @string,
+  displayName: @string,
+  image: @image,
+  bio: @text
+}
+
+// 2. Sending a notification
+notify @johndoe {
+  type: "new_post",
+  content: "Check out this new post!",
+  priority: high,
+  action: redirect("/posts/123")
+}
+
+// 3. Creating a feed item
+feed create {
+  author: @currentUser,
+  content: "Just shared a new skill tutorial!",
+  media: ["image1.jpg", "tutorial.pdf"],
+  tags: ["webdev", "react", "tutorial"]
+}
+
+// 4. Adding a notification listener to your React component
+// Here's how you could implement notifications in your code
+
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
+const NotificationFeed = () => {
+  const [notifications, setNotifications] = useState([]);
+  const { username } = useSelector(store => ({ username: store.username }));
+  
+  useEffect(() => {
+    // NotifyScript syntax integrated with React
+    listen @notifications for username {
+      onReceive: (newNotification) => {
+        setNotifications(prev => [newNotification, ...prev]);
+        showBadge("#notification-bell");
+      }
+    }
+    
+    // This would compile to appropriate WebSocket or polling code
+    return () => {
+      unlisten @notifications;
+    }
+  }, [username]);
+  
+  return (
+    <div className="notification-feed">
+      <h3>Notifications <span id="notification-bell" className="badge bg-primary">{notifications.length}</span></h3>
+      {notifications.map(notif => (
+        <div className="alert alert-info" key={notif.id}>
+          {notif.content}
+          <button className="btn btn-sm btn-link" onClick={() => markAsRead(notif.id)}>
+            Mark as read
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// 5. Implementing the actual notification update to your shared code
+const ProfileCard = props => {
+  // ... existing code ...
+  
+  // NotifyScript event handler
+  const sendNotification = (action) => {
+    broadcast {
+      to: user.followers,
+      type: "profile_update",
+      content: `${username} just updated their ${action}!`,
+      image: profileImage,
+      action: redirect(`/profile/${username}`)
+    }
+  }
+  
+  const onClickSave = async () => {
+    // ... existing save logic ...
+    
+    try {
+      const response = await updateUser(username, body);
+      setInEditMode(false);
+      setUser(response.data);
+      dispatch(updateSuccess(response.data));
+      
+      // Send notification when profile is updated
+      if (newProfileImage) {
+        sendNotification("profile picture");
+      } else if (updatedDisplayName !== displayName) {
+        sendNotification("display name");
+      }
+      
+    } catch (error) {
+      setValidationErrors(error.response.data.validationErrors);
+    }
+  };
+  
+  // ... rest of component ...
+}
