@@ -11,5 +11,6 @@ public interface IFileAttachmentRepository extends JpaRepository<FileAttachment,
 
     List<FileAttachment> findByDateBeforeAndPostIsNull(Date date);
     List<FileAttachment> findByPostUser(User user);
+    List<FileAttachment> findByPostCreate(User user);
 
 }
