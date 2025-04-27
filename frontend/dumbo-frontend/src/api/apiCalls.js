@@ -89,3 +89,45 @@ export const markNotificationAsRead = (notificationId = null) => {
 export const getNotificationCount = () => {
   return axios.get('/api/1.0/notifications/count');
 };
+
+// Get notification count (unread)
+export const getNotificationCount = () => {
+  return axios.get('/api/1.0/notifications/count');
+};
+
+// Get all notifications
+export const getNotifications = (page = 1, limit = 20) => {
+  return axios.get('/api/1.0/notifications', {
+    params: { page, limit }
+  });
+};
+
+// Mark notification as read
+export const markNotificationAsRead = (notificationId) => {
+  return axios.put(`/api/1.0/notifications/${notificationId}/read`);
+};
+
+// Mark all notifications as read
+export const markAllNotificationsAsRead = () => {
+  return axios.put('/api/1.0/notifications/read-all');
+};
+
+// Create a notification (admin/system use)
+export const createNotification = (data) => {
+  return axios.post('/api/1.0/notifications', data);
+};
+
+// Update notification content (admin use)
+export const updateNotification = (notificationId, data) => {
+  return axios.put(`/api/1.0/notifications/${notificationId}`, data);
+};
+
+// Delete a notification
+export const deleteNotification = (notificationId) => {
+  return axios.delete(`/api/1.0/notifications/${notificationId}`);
+};
+
+// Delete all notifications for current user
+export const deleteAllNotifications = () => {
+  return axios.delete('/api/1.0/notifications');
+};
