@@ -72,3 +72,20 @@ export const deleteUser = username => {
 export const logout = () => {
     return axios.post('/api/1.0/logout');
 }
+export const getNotifications = (page = 0, size = 10) => {
+  return axios.get(`/api/1.0/notifications?page=${page}&size=${size}`);
+};
+
+// Mark a specific notification as read (or all if no id provided)
+export const markNotificationAsRead = (notificationId = null) => {
+  if (notificationId) {
+    return axios.post(`/api/1.0/notifications/${notificationId}/read`);
+  } else {
+    return axios.post('/api/1.0/notifications/read-all');
+  }
+};
+
+// Get notification count (unread)
+export const getNotificationCount = () => {
+  return axios.get('/api/1.0/notifications/count');
+};
